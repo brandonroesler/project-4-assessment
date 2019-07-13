@@ -7,13 +7,14 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-
+      selected: '1'
     }
-    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
-      console.log(`${CircleSelector} clicked`)
+  changeName = (newSelection) =>{
+    this.setState({
+      selected: newSelection
+    })
   }
 
   render() {
@@ -22,9 +23,12 @@ class App extends Component {
         <header className="App-header">UNIT 4 FINAL ASSESSMENT</header>
         <main>
           <CircleSelector 
-            handleClick={this.handleClick}
+            selected={this.state.selected}
+            onChange={this.changeName}
           />
-          <Circles />
+          <Circles 
+            selected={this.state.selected}
+          />
         </main>
       </div>
     );
